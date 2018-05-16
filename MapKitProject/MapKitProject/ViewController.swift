@@ -13,21 +13,20 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     let locationMgr = CLLocationManager()
+    let pizzaAnnotations = PizzaAnnotations()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
 //        mapView.showsUserLocation = true
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         locationMgr.delegate = self
         locationMgr.startUpdatingLocation()
         locationMgr.desiredAccuracy = kCLLocationAccuracyBest
         locationMgr.requestAlwaysAuthorization()
+        
+        // add the annotations
+        mapView.addAnnotations(pizzaAnnotations.restaurants)
     }
 }
 
@@ -45,9 +44,33 @@ extension ViewController: CLLocationManagerDelegate {
         mapView.setRegion(region, animated: true)
         
         // Drop a pin at user's Current Location
-        let myAnnotation: MKPointAnnotation = MKPointAnnotation()
-        myAnnotation.coordinate = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude);
-        myAnnotation.title = "Current location"
+        let myAnnotation = PizzaAnnotation(userLocation.coordinate.latitude, userLocation.coordinate.longitude, title: "USER LOCATION", subtitle: "Where you are", type: .userLocation)
         mapView.addAnnotation(myAnnotation)
+    }
+}
+
+extension ViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let myAnnotation = annotation as? PizzaAnnotation else {
+            return nil
+        }
+        
+        var identifier = myAnnotation.title ?? ""
+        var annotationView = MKMarkerAnnotationView()
+        if let dequedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+            annotationView = dequedView
+        } else{
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        
+        switch myAnnotation.type {
+        case .userLocation:
+            annotationView.glyphImage = UIImage(named: "bubble")
+        case .restaurant:
+            annotationView.selectedGlyphImage = UIImage(named: "circle")
+        }
+        //annotationView.clusteringIdentifier = identifier
+        
+        return annotationView
     }
 }

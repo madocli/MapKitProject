@@ -12,6 +12,7 @@
 		2AAB2C8D20ACDA40003A01D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AAB2C8B20ACDA40003A01D9 /* Main.storyboard */; };
 		2AAB2C8F20ACDA40003A01D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AAB2C8E20ACDA40003A01D9 /* Assets.xcassets */; };
 		2AAB2C9220ACDA40003A01D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AAB2C9020ACDA40003A01D9 /* LaunchScreen.storyboard */; };
+		2AAB2C9A20ACE517003A01D9 /* PizzaAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAB2C9920ACE517003A01D9 /* PizzaAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2AAB2C8E20ACDA40003A01D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AAB2C9120ACDA40003A01D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AAB2C9320ACDA40003A01D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AAB2C9920ACE517003A01D9 /* PizzaAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				2AAB2C8E20ACDA40003A01D9 /* Assets.xcassets */,
 				2AAB2C9020ACDA40003A01D9 /* LaunchScreen.storyboard */,
 				2AAB2C9320ACDA40003A01D9 /* Info.plist */,
+				2AAB2C9920ACE517003A01D9 /* PizzaAnnotation.swift */,
 			);
 			path = MapKitProject;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AAB2C9A20ACE517003A01D9 /* PizzaAnnotation.swift in Sources */,
 				2AAB2C8A20ACDA40003A01D9 /* ViewController.swift in Sources */,
 				2AAB2C8820ACDA40003A01D9 /* AppDelegate.swift in Sources */,
 			);
